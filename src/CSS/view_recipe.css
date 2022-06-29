@@ -1,0 +1,61 @@
+.small_box {
+  height: auto;
+  width: max-content;
+  padding: 10px;
+  background-color: #b4ff9f;
+  color: rgb(0, 0, 0);
+  border-radius: 30px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.success {
+  height: auto;
+  width: max-content;
+  padding: 10px;
+  background-color: #6ec257;
+  color: rgb(0, 0, 0);
+  border-radius: 30px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.rejected {
+  height: auto;
+  width: max-content;
+  padding: 10px;
+  background-color: hsl(0, 100%, 76%);
+  color: rgb(0, 0, 0);
+  border-radius: 30px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+.pending {
+  height: auto;
+  width: max-content;
+  padding: 10px;
+  background-color: #e8ff9c;
+  color: rgb(0, 0, 0);
+  border-radius: 30px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.exp_btn {
+  height: auto;
+  width: max-content;
+  padding: 10px;
+  background-color: #025709;
+  color: rgb(255, 255, 255);
+  border-radius: 30px;
+  margin-top: 14px;
+  margin-left: 5px;
+}
+.exp_btn:hover {
+  color: rgb(255, 255, 255);
+}
+
+.img{
+    border-radius: 50%;
+}
+.icons{
+  margin-right: 5px;
+}

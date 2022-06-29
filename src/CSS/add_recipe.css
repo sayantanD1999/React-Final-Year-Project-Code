@@ -1,0 +1,276 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Dosis", sans-serif;
+  }
+  section {
+    min-height: 100vh;
+    padding-top: 100px;
+  }
+
+  a,
+  a:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .icons{
+    margin-right: 15px;
+    font-size: x-large;
+    color: #03c259;
+    
+  }
+  
+  .notice{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+  
+  .notice_div{
+    width: 90%;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  .notice_div>div{
+    display: flex;
+    justify-content:start;
+  }
+  
+  .icon_div{
+    width: 55px;
+    text-align: center;
+  }
+  
+  .nav_div {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    padding-top: 20px;
+  }
+  
+  .fa-user-circle{
+    font-size: x-large;
+    color: #fff;
+    margin-right: 10px;
+  }
+  
+  #profile {
+    width: auto;
+    height: 40px;
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 25px;
+    background-color:#198754;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logout-btn {
+    width: auto;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 4px;
+    background-color: #198754;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #landing_text {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 700;
+    font-family: "Dosis", sans-serif;
+  }
+  
+  #landing_btn {
+    height: 70px;
+    width: 280px;
+    transition: 0.3s;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-weight: bolder;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    background-color: #198754;
+  }
+  #landing_btn:hover {
+    transition-timing-function: linear;
+    background-color: #00b661;
+  }
+  
+  #chef_img_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .mid_col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .landing_img {
+    height: 100%;
+    width: 100%;
+  }
+  
+  #featured {
+    color: #198754;
+  }
+  
+  .custom-file-upload {
+    margin-top: 10px;
+    background-color: #198754;
+    color: #fff;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  
+  #user_img {
+    height: 300px;
+    width: 300px;
+  }
+  
+  #get_user_img {
+    size: 40px;
+  }
+  
+  fieldset {
+    border-radius: 15px;
+    border-color: rgb(0, 0, 0);
+    outline: none;
+  }
+  
+  .inp {
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    width: 90%;
+    padding-left: 10px;
+    margin-top: 10px;
+    box-shadow: 0 0 5px rgb(180, 180, 180);
+    margin-bottom: 20px;
+    background-color: rgb(255, 255, 255);
+  }
+  .inp2 {
+    height: 40px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    width: 90%;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgb(180, 180, 180);
+    background-color: rgb(255, 255, 255);
+  }
+
+  .inp3 {
+    height: 140px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    width: 90%;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgb(180, 180, 180);
+    background-color: rgb(255, 255, 255);
+  }
+  
+  #quote {
+    outline: none;
+    border-radius: 3px;
+    width: 90%;
+    padding-left: 10px;
+  }
+  
+  .big_box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  
+  .ingredients,
+  .procedure {
+    margin: auto;
+  }
+  
+  .cross {
+    font-size: 30px;
+    font-weight: bolder;
+    cursor: pointer;
+    color: #fff;
+  }
+  .submit_btn_div {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mandatory {
+    color: red;
+  }
+  
+  input[type="radio"]{
+    margin-left: 14px;
+    margin-right: 6px;
+  }
+  input[type="checkbox"]{
+    margin-left: 20px;
+  }
+  
+  .col-md-6{
+    padding-top: 30px;
+  }
+  
+  @media screen and (min-width: 270px) and (max-width: 880px) {
+    #landing_text {
+      font-size: 30px;
+      font-weight: 700;
+    }
+    section {
+      padding-top: 50px;
+    }
+  
+    button {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media screen and (width: 768px) {
+    section {
+      min-height: auto;
+    }
+  }
+  
+  @media screen and (width: 1024px) {
+    section {
+      min-height: auto;
+    }
+  }
+  
