@@ -40,7 +40,7 @@ function AllRecipe() {
   }, []);
 
   const getAllRecipes = () => {
-    axios.get(`http://localhost:3000/getallrecipes`).then((response) => {
+    axios.get(`https://react-node-recipe.herokuapp.com/getallrecipes`).then((response) => {
       console.log(response);
       if (response && response.status == 200) {
         if (response.data.statusCode == 200) {
@@ -71,7 +71,7 @@ function AllRecipe() {
   };
 
   const getAllUsers = () => {
-    axios.get(`http://localhost:3000/getallusers`).then((response) => {
+    axios.get(`https://react-node-recipe.herokuapp.com/getallusers`).then((response) => {
       console.log(response);
       if (response && response.status == 200) {
         if (response.data.statusCode == 200) {
@@ -88,7 +88,7 @@ function AllRecipe() {
   };
 
   const getAllMsgs = () => {
-    axios.get(`http://localhost:3000/getallmsgs`).then((response) => {
+    axios.get(`https://react-node-recipe.herokuapp.com/getallmsgs`).then((response) => {
       console.log(response);
       if (response && response.status == 200) {
         for (let i = 0; i < response.data.val.length; i++) {

@@ -39,7 +39,7 @@ function AdminLogin() {
 
   function toAdmin() {
     // window.location.replace('http://localhost/project-finalyear/admin/login.php');
-    window.open("http://localhost/project-finalyear/admin/login.php");
+    window.open("https://react-node-recipe.herokuapp.com/admin/login.php");
   }
 
   const login = async () => {
@@ -52,7 +52,7 @@ function AdminLogin() {
 
     if (form_validation()) {
       axios
-        .post(`http://localhost:3000/admin-login`, { obj: obj })
+        .post(`https://react-node-recipe.herokuapp.com/admin-login`, { obj: obj })
         .then((response) => {
           console.log(response);
           if (response && response.status == 200) {

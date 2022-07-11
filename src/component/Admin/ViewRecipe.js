@@ -40,7 +40,7 @@ function ViewRecipe() {
     // if (!loggedInUser) {
     //   navigate("/");
     // } else {
-    axios.post(`/getrecipeAdmin/${foodId}`).then((response) => {
+    axios.post(`https://react-node-recipe.herokuapp.com/${foodId}`).then((response) => {
       if (response && response.status == 200) {
         console.log(response);
         setRecipeDetails(response.data.rows[0]);
@@ -164,7 +164,7 @@ function ViewRecipe() {
             </Col>
 
             <Col lg={6} xs={12}>
-            <div className="d-flex justify-content-between">
+              <div className="d-flex justify-content-between">
                 <h2> {recipeDetails.food}</h2>
                 <div style={{ width: "30px", height: "30px" }} className="mt-2">
                   {recipeDetails.food_type == "Veg" ? <>
