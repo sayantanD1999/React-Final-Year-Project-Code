@@ -56,8 +56,27 @@ function View_Recipe() {
               />
             </Col>
 
-            <Col lg={6} xs={12}>
-              <h2> {recipeDetails.food}</h2>
+            <Col lg={6} xs={12} className="p-4">
+              <div className="d-flex justify-content-between">
+                <h2> {recipeDetails.food}</h2>
+                <div style={{ width: "30px", height: "30px" }} className="mt-2">
+                  {recipeDetails.food_type == "Veg" ? <>
+
+                    <img
+                      src={`${process.env.PUBLIC_URL}/pics/Veg.png`}
+                      width="100%"
+                      alt="..."
+                    />
+
+                  </> : <>
+                    <img
+                      src={`${process.env.PUBLIC_URL}/pics/non-veg.jpg`}
+                      width="100%"
+                      alt="..."
+                    /></>}
+                </div>
+              </div>
+
               <p>
                 {" "}
                 <FaPencilAlt />
@@ -119,6 +138,8 @@ function View_Recipe() {
             <p>{recipeDetails.ingredients}</p>
             <h3>Procedure</h3>
             <p>{recipeDetails.proce}</p>
+            <br />
+
           </div>
         </Col>
       </Container>

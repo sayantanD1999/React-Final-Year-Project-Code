@@ -79,6 +79,18 @@ function UserInfo() {
     }
   };
 
+  const deleteRecipe = (id) => {
+
+    axios.post(`/deleterecipe/${id}`).then((response) => {
+      // console.log(res);
+      if (response && response.status == 200) {
+        console.log(response);
+        window.location.reload();
+      }
+    });
+
+  }
+
   return (
     <>
       <Container>
@@ -99,9 +111,9 @@ function UserInfo() {
             <div>
               <h1>{name}</h1>
               <h3>{email}</h3>
-              <Link to={`/editprofile/${email}`} className="btn btn-success">
+              {/* <Link to={`/editprofile/${email}`} className="btn btn-success">
                 <FiEdit /> Edit Profile
-              </Link>
+              </Link> */}
             </div>
           </Col>
         </Row>
@@ -133,7 +145,26 @@ function UserInfo() {
                 </Col>
                 <Col lg={8}>
                   <div className="card-body">
-                    <h3 className="card-title">{data.food}</h3>
+                    <div className="d-flex justify-content-between">
+                      <h3 className="card-title">{data.food}</h3>
+                      <div style={{ width: "30px", height: "30px" }} className="mt-">
+                        {data.food_type == "Veg" ? <>
+
+                          <img
+                            src={`${process.env.PUBLIC_URL}/pics/Veg.png`}
+                            width="100%"
+                            alt="..."
+                          />
+
+                        </> : <>
+                          <img
+                            src={`${process.env.PUBLIC_URL}/pics/non-veg.jpg`}
+                            width="100%"
+                            alt="..."
+                          /></>}
+                      </div>
+
+                    </div>
                     <div className="recipe_highlights d-flex ">
                       <div className="small_box">
                         <MdFoodBank />
@@ -170,7 +201,7 @@ function UserInfo() {
                       ) : null}
                       {data.status == "Rejected" ? (
                         <>
-                          <div className="rekjected">{data.status}</div>
+                          <div className="rejected">{data.status}</div>
                         </>
                       ) : null}
 
@@ -183,7 +214,7 @@ function UserInfo() {
                       </button>
                     </div>
 
-                    <div className="card-details">
+                    <div className="card-details pt-3">
                       <p className="recipe-details">
                         {" "}
                         <span className="heading">Description </span>
@@ -205,6 +236,12 @@ function UserInfo() {
                           </div>
                         </>
                       ) : null}
+
+                      <br />
+                      <button className="btn btn-danger" onClick={() => { deleteRecipe(data._id) }} >
+                        Delete Recipe
+
+                      </button>
                     </div>
                   </div>
                 </Col>

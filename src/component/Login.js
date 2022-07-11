@@ -40,8 +40,8 @@ function Login() {
   };
 
   function toAdmin() {
-    // window.location.replace('http://localhost/project-finalyear/admin/login.php');
-    window.open("http://localhost/project-finalyear/admin/login.php");
+    // window.open("http://localhost/project-finalyear/admin/login.php");
+    navigate(`/adminlogin`);
   }
 
   const login = async () => {
@@ -62,11 +62,11 @@ function Login() {
               console.log(
                 response.data.val[0].user_userid,
                 response.data.val[0].user_name,
-                response.data.val[0].user_id
+                response.data.val[0]._id
               );
               let uemail = response.data.val[0].user_userid;
               let uname = response.data.val[0].user_name;
-              let uid = response.data.val[0].user_id;
+              let uid = response.data.val[0]._id;
               setData(uemail, uname, true, uid);
               // localStorage.setItem("useremail", response.data.val[0].user_userid);
               // localStorage.setItem("username", response.data.val[0].user_name);

@@ -5,26 +5,42 @@ import { Link, useNavigate } from "react-router-dom";
 import "../CSS/home.css";
 import { FaUserAlt, FaClock, FaUtensils, FaSmile } from "react-icons/fa";
 import { BiCheckboxChecked } from "react-icons/bi";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
+toast.configure();
 function Home() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [msg, setMsg] = useState("");
   const [email, setEmail] = useState("");
   const [recipe, setRecipe] = useState([]);
- 
 
-  // const submit_msg = () => {
-  //   let obj = {
-  //     name: name,
-  //     email: email,
-  //     msg: msg,
-  //   };
-  //   console.log(name, email, msg);
-  //   axios.post(`http://localhost:3000/submit-msg`, { obj }).then((res) => {
-  //     console.log(res);
-  //   });
-  // };
+
+  const submit_msg = (e) => {
+    e.preventDefault();
+    let obj = {
+      name: name,
+      email: email,
+      msg: msg,
+    };
+    console.log(name, email, msg);
+    axios.post(`http://localhost:3000/submit-msg`, { obj }).then((res) => {
+      console.log(res);
+      if (res.status == 200 && res.data.msg == "Success") {
+        toast.success("Your Message Is Submitted", {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        window.scroll(0,0);
+      }
+    });
+  };
 
   window.onscroll = () => {
     // console.log(window.Top);
@@ -210,40 +226,56 @@ function Home() {
                 if (index <= 2) {
                   return (
                     <div className="card" key={index}>
-                      <img
-                        src={`${process.env.PUBLIC_URL}/food/${data.image_name}`}
-                        className="card-img-top"
-                        alt="..."
-                      />
-                      <br />
-                      <div className="card_details">
-                        <h2 style={{ paddingLeft: "20px" }}>{data.food}</h2>
-                      </div>
-
-                      <div className="card-content">
-                        <div className="small_box2">
-                          <FaClock />
-                          <p>{data.time}</p>
-                        </div>
-                        <div className="small_box2">
-                          <FaUtensils />
-                          <p>Serving</p>
-                        </div>
-                        <div className="small_box2">
-                          <FaSmile />
-                          <p>Beginner</p>
-                        </div>
-                      </div>
-                      <div className="card-btn_div">
-                        <Link
-                          to={`/viewrecipe/${data.id}`}
-                          className="card-btn text-center pt-2"
-                        >
-                          Check Recipe{" "}
-                          <i className="fas fa-arrow-circle-right"></i>
-                        </Link>
+                    <img
+                      src={`${process.env.PUBLIC_URL}/food/${data.image_name}`}
+                      className="card-img-top"
+                      alt="..."
+                    />
+                    <br />
+                    <div className="d-flex justify-content-around">
+  
+                      <h2>{data.food}</h2>
+                      <div style={{ width: "30px", height: "30px"}} className="mt-">
+                        {data.food_type == "Veg" ? <>
+  
+                          <img
+                            src={`${process.env.PUBLIC_URL}/pics/Veg.png`}
+                            width="100%"
+                            alt="..."
+                          />
+  
+                        </> : <>
+                          <img
+                            src={`${process.env.PUBLIC_URL}/pics/non-veg.jpg`}
+                            width="100%"
+                            alt="..."
+                          /></>}
                       </div>
                     </div>
+  
+                    <div className="card-content">
+                      <div className="small_box2">
+                        <FaClock />
+                        <p>{data.time}</p>
+                      </div>
+                      <div className="small_box2">
+                        <FaUtensils />
+                        <p>Serving</p>
+                      </div>
+                      <div className="small_box2">
+                        <FaSmile />
+                        <p>Beginner</p>
+                      </div>
+                    </div>
+                    <div className="card-btn_div">
+                      <Link
+                        to="/login"
+                        className="card-btn text-center pt-2"
+                      >
+                        Check Recipe <i className="fas fa-arrow-circle-right"></i>
+                      </Link>
+                    </div>
+                  </div>
                   );
                 }
               })}
@@ -274,7 +306,7 @@ function Home() {
           </div>
         </section>
 
-        {/* <section id="contact" className="rows">
+        <section id="contact" className="rows">
           <div className="col-md-6">
             <img src="pics/contact_img.png" height="100%" width="100%" alt="" />
           </div>
@@ -345,7 +377,7 @@ function Home() {
               </div>
             </form>
           </div>
-        </section> */}
+        </section>
       </Container>
     </div>
   );

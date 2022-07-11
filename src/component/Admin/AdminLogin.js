@@ -103,9 +103,11 @@ function AdminLogin() {
           <a className="btn btn-success" href="/signup">
             Sign Up
           </a>
-          <button onClick={toAdmin} className="btn btn-success">
-            Admin
-          </button>
+          <Link to="/login">
+            <button className="btn btn-success">
+              Log In
+            </button>
+          </Link>
         </div>
       </div>
       <div>
@@ -131,9 +133,11 @@ function AdminLogin() {
             <ul>
               <li>
                 <div>
-                  <button onClick={toAdmin} className="btn btn-success">
-                    Admin
-                  </button>
+                  <Link to="/login">
+                    <button className="btn btn-success">
+                      Log In
+                    </button>
+                  </Link>
                   <Link to="/signup">
                     <button className="btn btn-success">Sign Up</button>
                   </Link>

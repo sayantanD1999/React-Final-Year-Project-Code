@@ -161,26 +161,49 @@ function ViewUser() {
                 </Col>
                 <Col lg={8}>
                   <div className="card-body">
-                    <h3 className="card-title">{data.food}</h3>
+                    <div className="d-flex justify-content-between">
+                      <h3 className="card-title">{data.food}</h3>
+                      <div style={{ width: "30px", height: "30px" }} className="mt-">
+                        {data.food_type == "Veg" ? <>
+
+                          <img
+                            src={`${process.env.PUBLIC_URL}/pics/Veg.png`}
+                            width="100%"
+                            alt="..."
+                          />
+
+                        </> : <>
+                          <img
+                            src={`${process.env.PUBLIC_URL}/pics/non-veg.jpg`}
+                            width="100%"
+                            alt="..."
+                          /></>}
+                      </div>
+
+                    </div>
+
                     <div className="recipe_highlights d-flex ">
                       <div className="small_box">
                         <MdFoodBank />
                         <>
-                          {data.category_id == 10 ? <>South Indian</> : null}
-                          {data.category_id == 11 ? <>North Indian</> : null}
-                          {data.category_id == 12 ? <>East Indian</> : null}
+                          <span className="p-3">
+                            {data.category_id == 10 ? <>South Indian</> : null}
+                            {data.category_id == 11 ? <>North Indian</> : null}
+                            {data.category_id == 12 ? <>East Indian</> : null}
 
-                          {data.category_id == 13 ? <>West Indian</> : null}
+                            {data.category_id == 13 ? <>West Indian</> : null}
+                          </span>
                         </>
                       </div>
                       <div className="small_box">
                         {" "}
                         <FaUtensils />
-                        {data.type}
+                        <span className="p-3">{data.type}</span>
                       </div>
                       <div className="small_box">
                         <FaClock />
-                        {data.time}
+                        <span className="p-3">{data.time}</span>
+
                       </div>
                     </div>
 
@@ -245,6 +268,7 @@ function ViewUser() {
                       <button
                         className="btn btn-success"
                         onClick={(e) => showEditModal(data.id)}
+                        style={{ borderRadius: "30px" }}
                       >
                         Edit verification
                       </button>
