@@ -19,6 +19,7 @@ function AddRecipe() {
   const [recipeDescription, setRecipeDescription] = useState("");
   const [recipeTradition, setRecipeTradition] = useState("");
   const [recipeRegion, setRecipeRegion] = useState("");
+  const [foodType, setFoodType] = useState("");
   const [recipeIngredients, setRecipeIngredients] = useState("");
   const [recipeProcedure, setRecipeProcedure] = useState("");
   const [recipeImgs, setRecipeImgs] = useState([]);
@@ -43,6 +44,7 @@ function AddRecipe() {
   }, []);
 
   const notify = () => {
+
     toast.success("Recipe Submitted Successfully", {
       position: "top-center",
       autoClose: 2000,
@@ -85,7 +87,8 @@ function AddRecipe() {
     return flag;
   };
 
-  const submitRecipe = () => {
+  const submitRecipe = (e) => {
+    e.preventDefault();
     if (validateForm()) {
       let formData = new FormData();
       let name = localStorage.getItem("username");
@@ -102,15 +105,15 @@ function AddRecipe() {
       formData.append("region", recipeRegion);
       formData.append("ingredients", recipeIngredients);
       formData.append("procedure", recipeProcedure);
+      formData.append("foodtype", foodType);
       formData.append("author", name);
       formData.append("userid", uid);
 
       const config = {
         headers: { "content-type": "multipart/form-data" },
       };
-
       axios
-        .post(`http://localhost:3000/submitrecipe`, formData)
+        .post(`http://localhost:3000/submitrecipe`, formData, config)
         .then((response) => {
           console.log(response);
           if (response && response.status == 200) {
@@ -118,8 +121,10 @@ function AddRecipe() {
             notify();
           }
         });
-    }
-  };
+
+    };
+  }
+
   function logout() {
     console.log("Frontend logout");
     axios.get(`/logout/${email}`).then((response) => {
@@ -290,7 +295,6 @@ function AddRecipe() {
               <b> Recipe Type</b> <span className="mandatory">*</span>
             </label>
             <br />
-            <br />
             <label>
               <input
                 type="radio"
@@ -352,33 +356,38 @@ function AddRecipe() {
               />{" "}
               Salad
             </label>
-            <label>
-              {" "}
-              <input
-                type="radio"
-                className="rt"
-                value="21"
-                onChange={(e) => setRecipeSubCategory(e.target.value)}
-                name="type"
-                id=""
-              />{" "}
-              Beverages
-            </label>
-            <label>
-              {" "}
-              <input
-                type="radio"
-                className="rt"
-                value="19"
-                onChange={(e) => setRecipeSubCategory(e.target.value)}
-                name="type"
-                id=""
-              />{" "}
-              Accompaniments
-            </label>
+            <br /><br />
 
+            <label htmlFor="recipe_name">
+              <b> Food Type</b> <span className="mandatory">*</span>
+            </label>
             <br />
-
+            <label>
+              {" "}
+              <input
+                type="radio"
+                className="rt"
+                value="Veg"
+                onChange={(e) => setFoodType(e.target.value)}
+                name="type"
+                id=""
+              />{" "}
+              Veg
+            </label>
+            <label>
+              {" "}
+              <input
+                type="radio"
+                className="rt"
+                value="Non-Veg"
+                onChange={(e) => setFoodType(e.target.value)}
+                name="type"
+                id=""
+              />{" "}
+              Non-Veg
+            </label>
+            <br />
+            <br />
             <label htmlFor="email">
               {" "}
               <b>Email</b>{" "}
@@ -591,7 +600,7 @@ function AddRecipe() {
             id="submit_recipe"
             className="btn btn-success"
             // type="submit"
-            onClick={submitRecipe}
+            onClick={(e) => submitRecipe(e)}
           >
             Submit
           </button>

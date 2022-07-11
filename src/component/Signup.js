@@ -61,9 +61,10 @@ function Signup() {
   }
 
   function toAdmin() {
-    // window.location.replace('http://localhost/project-finalyear/admin/login.php');
-    window.open("http://localhost/project-finalyear/admin/login.php");
+    // window.open("http://localhost/project-finalyear/admin/login.php");
+    navigate(`/adminlogin`);
   }
+
   const user_signup = (e) => {
     e.preventDefault();
     console.log("Signup", form_validation());
@@ -89,11 +90,7 @@ function Signup() {
             }
             if (response.data.statusCode == 200) {
               console.log(response.data.data);
-              setData(email, name, true, response.data.data[0].user_id);
-              // localStorage.setItem("useremail", email);
-              // localStorage.setItem("username", name);
-              // localStorage.setItem("userLoggedIn", true);
-              // localStorage.setItem("userId", response.data.data[0].user_id);
+              setData(email, name, true, response.data.data[0]._id);
 
               navigate(`/recipefeed/${email}`);
             }

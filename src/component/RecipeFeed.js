@@ -13,13 +13,8 @@ function RecipeFeed() {
   const navigate = useNavigate();
   const [all, setAll] = useState([]);
   const [allSearch, setAllSearch] = useState([]);
-  const [ni, setNI] = useState([]);
-  const [si, setSI] = useState([]);
-  const [ei, setEI] = useState([]);
-  const [wi, setWI] = useState([]);
   const [initials, setInitials] = useState("");
   const [name, setName] = useState("");
-  // const [useremail, setUserEmail] = useState("");
 
   useEffect(() => {
     var loggedInUser = getData();
@@ -38,23 +33,7 @@ function RecipeFeed() {
           for (let i = 0; i < response.data.val.length; i++) {
             setAll((all) => [...all, response.data.val[i]]);
             setAllSearch((allSearch) => [...allSearch, response.data.val[i]]);
-            if (response.data.val[i].category_id == 10) {
-              // console.log(response.data.val);
-              setSI((si) => [...si, response.data.val[i]]);
-            }
-            if (response.data.val[i].category_id == 11) {
-              setNI((ni) => [...ni, response.data.val[i]]);
-            }
-            if (response.data.val[i].category_id == 12) {
-              setEI((ei) => [...ei, response.data.val[i]]);
-            }
-            if (response.data.val[i].category_id == 13) {
-              setWI((wi) => [...wi, response.data.val[i]]);
-            }
           }
-          // setUserEmail(response.data.val[0].email);
-          // setName(response.data.val[0].name);
-          // console.log(name, useremail);
         }
       });
       const name = localStorage.getItem("username").split(" ");
@@ -71,9 +50,10 @@ function RecipeFeed() {
   const searchRecipe = (val) => {
     console.log(val);
     let arr = []
-    for (let i = 0; i < all.length; i++) {
-      if (all[i].food.toUpperCase().search(val.toUpperCase()) != -1) {
-        arr.push(all[i]);
+    let temp = all;
+    for (let i = 0; i < temp.length; i++) {
+      if (temp[i].food.toUpperCase().search(val.toUpperCase()) != -1) {
+        arr.push(temp[i]);
       }
     }
     setAllSearch([...arr]);
@@ -117,6 +97,31 @@ function RecipeFeed() {
       }
     });
   }
+
+  function setFoodType(n) {
+
+    var temp = all;
+
+
+    if (n == "Both") {
+      setAllSearch([]);
+      for (let i = 0; i < temp.length; i++) {
+        setAllSearch((allSearch) => [...allSearch, temp[i]]);
+      }
+    }
+    else {
+      var temp2 = temp.filter(checkType);
+      function checkType(food) {
+        return food.food_type == n;
+      }
+      setAllSearch([]);
+      for (let i = 0; i < temp2.length; i++) {
+        setAllSearch((allSearch) => [...allSearch, temp2[i]]);
+      }
+    }
+  }
+
+
 
   return (
     <div>
@@ -176,58 +181,68 @@ function RecipeFeed() {
         </div>
       </div>
 
-      <div className="mt-5 d-flex justify-content-center">
-        <ul className="d-flex p-0 pt-3">
-          <div
-            className="tab_btns"
-            onClick={(e) => set_tab(e, "all")}
-            data-zone="all"
-            id="all_btn"
-          >
-            <p className="nav-link"> All</p>
+      <div className="mt-5 d-flex flex-column">
+        <div className="col-12">
+          <ul className="d-flex justify-content-center p-0 pt-3">
+            <div
+              className="tab_btns"
+              onClick={(e) => set_tab(e, "all")}
+              data-zone="all"
+              id="all_btn"
+            >
+              <p className="nav-link"> All</p>
+            </div>
+            <div
+              className="tab_btns"
+              onClick={(e) => set_tab(e, "si")}
+              id="si_btn"
+              data-zone="si"
+            >
+              <p className="nav-link">South Indian</p>
+            </div>
+            <div
+              className="tab_btns"
+              onClick={(e) => set_tab(e, "ni")}
+              data-zone="ni"
+            >
+              <p className="nav-link">North Indian</p>
+            </div>
+            <div
+              className="tab_btns"
+              onClick={(e) => set_tab(e, "ei")}
+              data-zone="ei"
+            >
+              <p className="nav-link"> East Indian</p>
+            </div>
+            <div
+              className="tab_btns"
+              onClick={(e) => set_tab(e, "wi")}
+              data-zone="wi"
+            >
+              <p className="nav-link"> West Indian</p>
+            </div>
+          </ul>
+        </div>
+        <div className="col-12 p-4 text-center">
+
+          <input type="text" name="" placeholder="Search a recipe" id="search" className="p-2" onChange={e => searchRecipe(e.target.value)} />
+          <div className="p-4">
+            <input type="radio" id="veg" name="food_type" onChange={e => setFoodType(e.target.value)} value="Veg" />
+            <label for="veg">Veg</label>
+            <input type="radio" id="nv" name="food_type" onChange={e => setFoodType(e.target.value)} value="Non-Veg" />
+            <label for="nv">Non-Veg</label>
+            <input type="radio" id="bt" name="food_type" onChange={e => setFoodType(e.target.value)} value="Both" />
+            <label for="bt">Both</label>
           </div>
-          <div
-            className="tab_btns"
-            onClick={(e) => set_tab(e, "si")}
-            id="si_btn"
-            data-zone="si"
-          >
-            <p className="nav-link">South Indian</p>
-          </div>
-          <div
-            className="tab_btns"
-            onClick={(e) => set_tab(e, "ni")}
-            data-zone="ni"
-          >
-            <p className="nav-link">North Indian</p>
-          </div>
-          <div
-            className="tab_btns"
-            onClick={(e) => set_tab(e, "ei")}
-            data-zone="ei"
-          >
-            <p className="nav-link"> East Indian</p>
-          </div>
-          <div
-            className="tab_btns"
-            onClick={(e) => set_tab(e, "wi")}
-            data-zone="wi"
-          >
-            <p className="nav-link"> West Indian</p>
-          </div>
-        </ul>
+
+
+        </div>
       </div>
 
       <div className="tab_holder container">
         <div className="tab_content all-indian" id="all">
-          <div className="col-12 my-auto text-center">
-            <input type="text" name="" placeholder="Search a recipe" id="search" className="p-2" onChange={e => searchRecipe(e.target.value)} />
-          </div>
           <div>
             {allSearch.map((data, index) => {
-              // {
-              //   console.log(data);
-              // }
               return (
                 <div className="card" key={index}>
                   <img
@@ -236,8 +251,25 @@ function RecipeFeed() {
                     alt="..."
                   />
                   <br />
-                  <div className="card_details">
-                    <h2 style={{ paddingLeft: "20px" }}>{data.food}</h2>
+                  <div className="d-flex justify-content-around">
+
+                    <h2>{data.food}</h2>
+                    <div style={{ width: "30px", height: "30px"}} className="mt-">
+                      {data.food_type == "Veg" ? <>
+
+                        <img
+                          src={`${process.env.PUBLIC_URL}/pics/Veg.png`}
+                          width="100%"
+                          alt="..."
+                        />
+
+                      </> : <>
+                        <img
+                          src={`${process.env.PUBLIC_URL}/pics/non-veg.jpg`}
+                          width="100%"
+                          alt="..."
+                        /></>}
+                    </div>
                   </div>
 
                   <div className="card-content">
@@ -256,7 +288,7 @@ function RecipeFeed() {
                   </div>
                   <div className="card-btn_div">
                     <Link
-                      to={`/viewrecipe/${data.id}`}
+                      to={`/viewrecipe/${data._id}`}
                       className="card-btn text-center pt-2"
                     >
                       Check Recipe <i className="fas fa-arrow-circle-right"></i>
@@ -269,7 +301,11 @@ function RecipeFeed() {
         </div>
         <div className="tab_content south-indian" id="si">
           <div>
-            {si.map((data, index) => {
+            {allSearch.length == 0 ? (<>
+              <div class="alert alert-danger" role="alert">
+                No recipe to show
+              </div></>) : (null)}
+            {allSearch.filter((data => data.category_id == 10)).map((data, index) => {
               // {
               //   console.log(data);
               // }
@@ -281,8 +317,25 @@ function RecipeFeed() {
                     alt="..."
                   />
                   <br />
-                  <div className="card_details">
-                    <h2 style={{ paddingLeft: "20px" }}>{data.food}</h2>
+                  <div className="d-flex justify-content-around">
+
+                    <h2>{data.food}</h2>
+                    <div style={{ width: "30px", height: "30px"}} className="mt-">
+                      {data.food_type == "Veg" ? <>
+
+                        <img
+                          src={`${process.env.PUBLIC_URL}/pics/Veg.png`}
+                          width="100%"
+                          alt="..."
+                        />
+
+                      </> : <>
+                        <img
+                          src={`${process.env.PUBLIC_URL}/pics/non-veg.jpg`}
+                          width="100%"
+                          alt="..."
+                        /></>}
+                    </div>
                   </div>
 
                   <div className="card-content">
@@ -301,7 +354,7 @@ function RecipeFeed() {
                   </div>
                   <div className="card-btn_div">
                     <Link
-                      to={`/viewrecipe/${data.id}`}
+                      to={`/viewrecipe/${data._id}`}
                       className="card-btn text-center pt-2"
                     >
                       Check Recipe <i className="fas fa-arrow-circle-right"></i>
@@ -314,7 +367,11 @@ function RecipeFeed() {
         </div>
         <div className="tab_content north-indian" id="ni">
           <div>
-            {ni.map((data, index) => {
+            {allSearch.length == 0 ? (<>
+              <div class="alert alert-danger" role="alert">
+                No recipe to show
+              </div></>) : (null)}
+            {allSearch.filter((data => data.category_id == 11)).map((data, index) => {
               // {
               //   console.log(data);
               // }
@@ -326,9 +383,27 @@ function RecipeFeed() {
                     alt="..."
                   />
                   <br />
-                  <div className="card_details">
-                    <h2 style={{ paddingLeft: "20px" }}>{data.food}</h2>
+                  <div className="d-flex justify-content-around">
+
+                    <h2>{data.food}</h2>
+                    <div style={{ width: "30px", height: "30px"}} className="mt-">
+                      {data.food_type == "Veg" ? <>
+
+                        <img
+                          src={`${process.env.PUBLIC_URL}/pics/Veg.png`}
+                          width="100%"
+                          alt="..."
+                        />
+
+                      </> : <>
+                        <img
+                          src={`${process.env.PUBLIC_URL}/pics/non-veg.jpg`}
+                          width="100%"
+                          alt="..."
+                        /></>}
+                    </div>
                   </div>
+
                   <div className="card-content">
                     <div className="small_box2">
                       <FaClock />
@@ -345,7 +420,7 @@ function RecipeFeed() {
                   </div>
                   <div className="card-btn_div">
                     <Link
-                      to={`/viewrecipe/${data.id}`}
+                      to={`/viewrecipe/${data._id}`}
                       className="card-btn text-center pt-2"
                     >
                       Check Recipe <i className="fas fa-arrow-circle-right"></i>
@@ -357,8 +432,12 @@ function RecipeFeed() {
           </div>
         </div>
         <div className="tab_content east-indian" id="ei">
+          {allSearch.length == 0 ? (<>
+            <div class="alert alert-danger" role="alert">
+              No recipe to show
+            </div></>) : (null)}
           <div>
-            {ei.map((data, index) => {
+            {allSearch.filter((data => data.category_id == 12)).map((data, index) => {
               // {
               //   console.log(data);
               // }
@@ -370,8 +449,25 @@ function RecipeFeed() {
                     alt="..."
                   />
                   <br />
-                  <div className="card_details">
-                    <h2 style={{ paddingLeft: "20px" }}>{data.food}</h2>
+                  <div className="d-flex justify-content-around">
+
+                    <h2>{data.food}</h2>
+                    <div style={{ width: "30px", height: "30px"}} className="mt-">
+                      {data.food_type == "Veg" ? <>
+
+                        <img
+                          src={`${process.env.PUBLIC_URL}/pics/Veg.png`}
+                          width="100%"
+                          alt="..."
+                        />
+
+                      </> : <>
+                        <img
+                          src={`${process.env.PUBLIC_URL}/pics/non-veg.jpg`}
+                          width="100%"
+                          alt="..."
+                        /></>}
+                    </div>
                   </div>
 
                   <div className="card-content">
@@ -390,7 +486,7 @@ function RecipeFeed() {
                   </div>
                   <div className="card-btn_div">
                     <Link
-                      to={`/viewrecipe/${data.id}`}
+                      to={`/viewrecipe/${data._id}`}
                       className="card-btn text-center pt-2"
                     >
                       Check Recipe <i className="fas fa-arrow-circle-right"></i>
@@ -402,8 +498,12 @@ function RecipeFeed() {
           </div>
         </div>
         <div className="tab_content west-indian" id="wi">
+          {allSearch.length == 0 ? (<>
+            <div class="alert alert-danger" role="alert">
+              No recipe to show
+            </div></>) : (null)}
           <div>
-            {wi.map((data, index) => {
+            {allSearch.filter((data => data.category_id == 13)).map((data, index) => {
               // {
               //   console.log(data);
               // }
@@ -415,8 +515,25 @@ function RecipeFeed() {
                     alt="..."
                   />
                   <br />
-                  <div className="card_details">
-                    <h2 style={{ paddingLeft: "20px" }}>{data.food}</h2>
+                  <div className="d-flex justify-content-around">
+
+                    <h2>{data.food}</h2>
+                    <div style={{ width: "30px", height: "30px"}} className="mt-">
+                      {data.food_type == "Veg" ? <>
+
+                        <img
+                          src={`${process.env.PUBLIC_URL}/pics/Veg.png`}
+                          width="100%"
+                          alt="..."
+                        />
+
+                      </> : <>
+                        <img
+                          src={`${process.env.PUBLIC_URL}/pics/non-veg.jpg`}
+                          width="100%"
+                          alt="..."
+                        /></>}
+                    </div>
                   </div>
 
                   <div className="card-content">
@@ -435,7 +552,7 @@ function RecipeFeed() {
                   </div>
                   <div className="card-btn_div">
                     <Link
-                      to={`/viewrecipe/${data.id}`}
+                      to={`/viewrecipe/${data._id}`}
                       className="card-btn text-center pt-2"
                     >
                       Check Recipe <i className="fas fa-arrow-circle-right"></i>

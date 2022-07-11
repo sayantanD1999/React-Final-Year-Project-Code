@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap");
+
 body {
   margin: 0;
   padding: 0;
   background-color: rgb(255, 255, 255);
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -24,7 +26,7 @@ a:hover {
   color: white;
 }
 
-.transTabs .nav-link{
+.transTabs .nav-link {
   border-top: 0px !important;
   border-left: 0px !important;
   border-right: 0px !important;
@@ -36,30 +38,33 @@ a:hover {
   line-height: 1.49;
   letter-spacing: normal;
   text-align: left;
-  color:#b2afaf;
+  color: #b2afaf;
   position: relative;
   -webkit-transition: .2s;
   -moz-transition: .2s;
   transition: .2s;
 }
-.transTabs{
-  border-color:#c0dee8;
+
+.transTabs {
+  border-color: #c0dee8;
   border-width: 0.5px;
 }
-.transTabs .nav-link.active::after{
+
+.transTabs .nav-link.active::after {
   border-bottom: 5px solid #067397 !important;
-  color:#067397;
-  content:"";
-  width:100%;
+  color: #067397;
+  content: "";
+  width: 100%;
   position: absolute;
-  bottom:-3px;
-  left:0px;
-  height:2px;
+  bottom: -3px;
+  left: 0px;
+  height: 2px;
   border-radius: 20px;
 }
-.transTabs .nav-link:hover{
-  border-color:#067397;
-  color:#067397
+
+.transTabs .nav-link:hover {
+  border-color: #067397;
+  color: #067397
 }
 
 .tab {
@@ -72,7 +77,7 @@ a:hover {
   z-index: 1;
 }
 
-.tab > div {
+.tab>div {
   width: 50%;
   display: flex;
   justify-content: space-evenly;
@@ -107,6 +112,7 @@ a:hover {
   border-bottom-left-radius: 50px;
   border-top-left-radius: 50px;
 }
+
 .tab_btns:nth-child(5) {
   border-bottom-right-radius: 50px;
   border-top-right-radius: 50px;
@@ -117,9 +123,10 @@ a:hover {
   font-size: 90%;
 }
 
-#search{
+#search {
   border-radius: 4px;
   border: 0.5px solid gray;
+  width: 30%;
 }
 
 
@@ -142,16 +149,19 @@ a:hover {
 .tab_holder {
   padding-top: 20px;
 }
-.tab_content > div {
+
+.tab_content>div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
 @keyframes fadeEffect {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -175,6 +185,7 @@ a:hover {
   box-shadow: 0 0 4px rgb(186, 186, 186);
   overflow: hidden;
 }
+
 .card-img-top {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -244,6 +255,7 @@ a:hover {
   cursor: pointer;
   margin-top: 6px;
 }
+
 .menu {
   font-size: 32px;
   font-weight: bold;
@@ -318,17 +330,23 @@ li {
   .tab_btns {
     height: 35px;
     width: max-content;
-    font-size: 12px !important;
+    font-size: 10px !important;
     background-color: #d1d1d1;
     color: rgb(0, 0, 0);
-    font-size: 20px;
     cursor: pointer;
     transition: all 0.2s ease;
+  }
+
+  #search {
+    border-radius: 4px;
+    border: 0.5px solid gray;
+    width: 90%;
   }
 
   .tab_holder {
     padding-top: 70px;
   }
+
   .navbar {
     display: none;
   }
@@ -345,6 +363,7 @@ li {
   .side-menu {
     display: block;
   }
+
   .landing_text {
     background: rgba(2, 2, 2, 0.527);
     padding: 5px;
@@ -356,9 +375,11 @@ li {
   .about_details {
     width: 100%;
   }
+
   .about_details_text {
     width: 90%;
   }
+
   #line_seperation {
     width: 60%;
   }
@@ -373,16 +394,20 @@ li {
       "div1"
       "div2";
   }
+
   .add_recipe_content {
     width: 90%;
   }
-  .add_recipe_lowerdiv > h1 {
+
+  .add_recipe_lowerdiv>h1 {
     font-size: large;
     color: rgb(142, 223, 146);
   }
+
   #add_recipe {
     justify-content: center;
   }
+
   .side-menu {
     display: flex;
     justify-content: space-between;
@@ -394,12 +419,13 @@ li {
     background-color: #198754;
     padding-bottom: 4px;
   }
-  .side-menu > h1 {
+
+  .side-menu>h1 {
     padding: 0px 6px;
     color: #fff;
   }
 
-  .overlay-content > ul > li > h2 > a {
+  .overlay-content>ul>li>h2>a {
     color: #00753f !important;
   }
 }

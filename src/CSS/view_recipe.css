@@ -11,7 +11,7 @@
 .success {
   height: auto;
   width: max-content;
-  padding: 10px;
+  padding: 16px 16px;
   background-color: #6ec257;
   color: rgb(0, 0, 0);
   border-radius: 30px;
@@ -21,7 +21,7 @@
 .rejected {
   height: auto;
   width: max-content;
-  padding: 10px;
+  padding: 16px 16px;
   background-color: hsl(0, 100%, 76%);
   color: rgb(0, 0, 0);
   border-radius: 30px;
@@ -31,8 +31,8 @@
 .pending {
   height: auto;
   width: max-content;
-  padding: 10px;
-  background-color: #e8ff9c;
+  padding: 16px 16px;
+  background-color: #e4c200;
   color: rgb(0, 0, 0);
   border-radius: 30px;
   margin-top: 10px;
