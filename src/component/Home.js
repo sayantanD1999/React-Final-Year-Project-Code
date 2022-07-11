@@ -25,7 +25,7 @@ function Home() {
       msg: msg,
     };
     console.log(name, email, msg);
-    axios.post(`http://localhost:3000/submit-msg`, { obj }).then((res) => {
+    axios.post(`https://react-node-recipe.herokuapp.com/submit-msg`, { obj }).then((res) => {
       console.log(res);
       if (res.status == 200 && res.data.msg == "Success") {
         toast.success("Your Message Is Submitted", {
@@ -57,7 +57,7 @@ function Home() {
   };
 
   useEffect(() => {
-    axios.get(`/showrecipe`).then((response) => {
+    axios.get(`https://react-node-recipe.herokuapp.com/showrecipe`).then((response) => {
       if (response && response.status == 200) {
         console.log(response);
         for (let i = 0; i < response.data.val.length; i++) {
