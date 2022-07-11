@@ -26,7 +26,7 @@ function RecipeFeed() {
       document.getElementById("all_btn").classList.add("active");
 
       console.log(email);
-      axios.post(`/showrecipefeed/${email}`).then((response) => {
+      axios.post(`https://react-node-recipe.herokuapp.com/showrecipefeed/${email}`).then((response) => {
         // console.log(res);
         if (response && response.status == 200) {
           // console.log(response);
@@ -86,7 +86,7 @@ function RecipeFeed() {
 
   function logout() {
     console.log("Frontend logout");
-    axios.get(`/logout/${email}`).then((response) => {
+    axios.get(`https://react-node-recipe.herokuapp.com/logout/${email}`).then((response) => {
       if (
         response &&
         response.status == 200 &&

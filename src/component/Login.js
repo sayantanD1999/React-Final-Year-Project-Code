@@ -54,7 +54,7 @@ function Login() {
 
     if (form_validation()) {
       axios
-        .post(`http://localhost:3000/recipe`, { obj: obj })
+        .post(`https://react-node-recipe.herokuapp.com/recipe`, { obj: obj })
         .then((response) => {
           // console.log(res);
           if (response && response.status == 200) {

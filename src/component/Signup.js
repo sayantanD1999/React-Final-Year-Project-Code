@@ -80,7 +80,7 @@ function Signup() {
       };
 
       axios
-        .post(`http://localhost:3000/recipe-signup`, formData)
+        .post(`https://react-node-recipe.herokuapp.com/recipe-signup`, formData)
         .then((response) => {
           console.log(response);
 

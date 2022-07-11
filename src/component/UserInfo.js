@@ -33,7 +33,7 @@ function UserInfo() {
     if (!loggedInUser) {
       navigate("/");
     } else {
-      axios.get(`/userinfo2/${email}`).then((response) => {
+      axios.get(`https://react-node-recipe.herokuapp.com/userinfo2/${email}`).then((response) => {
         // console.log(res);
         if (response && response.status == 200) {
           console.log(response);
@@ -81,7 +81,7 @@ function UserInfo() {
 
   const deleteRecipe = (id) => {
 
-    axios.post(`/deleterecipe/${id}`).then((response) => {
+    axios.post(`https://react-node-recipe.herokuapp.com/deleterecipe/${id}`).then((response) => {
       // console.log(res);
       if (response && response.status == 200) {
         console.log(response);

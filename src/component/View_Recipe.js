@@ -27,7 +27,7 @@ function View_Recipe() {
     if (!loggedInUser) {
       navigate("/");
     } else {
-      axios.post(`/getrecipe/${foodId}`).then((response) => {
+      axios.post(`https://react-node-recipe.herokuapp.com/getrecipe/${foodId}`).then((response) => {
         if (response && response.status == 200) {
           console.log(response);
           setRecipeDetails(response.data.rows[0]);

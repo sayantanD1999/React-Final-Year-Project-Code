@@ -45,7 +45,7 @@ function ViewUser() {
     // if (!loggedInUser) {
     //   navigate("/");
     // } else {
-    axios.get(`/userinfo2/${useremail}`).then((response) => {
+    axios.get(`https://react-node-recipe.herokuapp.com/userinfo2/${useremail}`).then((response) => {
       // console.log(res);
       if (response && response.status == 200) {
         console.log(response);
@@ -80,7 +80,7 @@ function ViewUser() {
       status: val,
     };
     console.log(obj);
-    axios.post(`/updaterecipe`, { obj }).then((response) => {
+    axios.post(`https://react-node-recipe.herokuapp.com/updaterecipe`, { obj }).then((response) => {
       if (response && response.status == 200) {
         if (response.data.msg == "success") {
           window.location.reload();

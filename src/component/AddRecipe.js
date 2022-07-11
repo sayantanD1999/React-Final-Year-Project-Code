@@ -113,7 +113,7 @@ function AddRecipe() {
         headers: { "content-type": "multipart/form-data" },
       };
       axios
-        .post(`http://localhost:3000/submitrecipe`, formData, config)
+        .post(`https://react-node-recipe.herokuapp.com/submitrecipe`, formData, config)
         .then((response) => {
           console.log(response);
           if (response && response.status == 200) {
