@@ -100,7 +100,7 @@ function AllRecipe() {
 
   function logout() {
     console.log("admin logout");
-    axios.get(`/adminlogout/${email}`).then((response) => {
+    axios.get(`https://react-node-recipe.herokuapp.com/adminlogout/${email}`).then((response) => {
       if (
         response &&
         response.status == 200 &&
