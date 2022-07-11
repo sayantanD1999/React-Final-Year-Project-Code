@@ -37,7 +37,7 @@ function Home() {
           draggable: true,
           progress: undefined,
         });
-        window.scroll(0,0);
+        window.scroll(0, 0);
       }
     });
   };
@@ -218,67 +218,71 @@ function Home() {
             <center>
               <h1>Explore</h1>
             </center>
-            <div className="d-flex flex-wrap">
-              {recipe.map((data, index) => {
-                {
-                  console.log(index);
-                }
-                if (index <= 2) {
-                  return (
-                    <div className="card" key={index}>
-                    <img
-                      src={`${process.env.PUBLIC_URL}/food/${data.image_name}`}
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <br />
-                    <div className="d-flex justify-content-around">
-  
-                      <h2>{data.food}</h2>
-                      <div style={{ width: "30px", height: "30px"}} className="mt-">
-                        {data.food_type == "Veg" ? <>
-  
-                          <img
-                            src={`${process.env.PUBLIC_URL}/pics/Veg.png`}
-                            width="100%"
-                            alt="..."
-                          />
-  
-                        </> : <>
-                          <img
-                            src={`${process.env.PUBLIC_URL}/pics/non-veg.jpg`}
-                            width="100%"
-                            alt="..."
-                          /></>}
+            <div className="tab_content">
+              <div>
+
+
+                {recipe.map((data, index) => {
+                  {
+                    console.log(index);
+                  }
+                  if (index <= 2) {
+                    return (
+                      <div className="card" key={index}>
+                        <img
+                          src={`${process.env.PUBLIC_URL}/food/${data.image_name}`}
+                          className="card-img-top"
+                          alt="..."
+                        />
+                        <br />
+                        <div className="d-flex justify-content-around">
+
+                          <h2>{data.food}</h2>
+                          <div style={{ width: "30px", height: "30px" }} className="mt-">
+                            {data.food_type == "Veg" ? <>
+
+                              <img
+                                src={`${process.env.PUBLIC_URL}/pics/Veg.png`}
+                                width="100%"
+                                alt="..."
+                              />
+
+                            </> : <>
+                              <img
+                                src={`${process.env.PUBLIC_URL}/pics/non-veg.jpg`}
+                                width="100%"
+                                alt="..."
+                              /></>}
+                          </div>
+                        </div>
+
+                        <div className="card-content">
+                          <div className="small_box2">
+                            <FaClock />
+                            <p>{data.time}</p>
+                          </div>
+                          <div className="small_box2">
+                            <FaUtensils />
+                            <p>Serving</p>
+                          </div>
+                          <div className="small_box2">
+                            <FaSmile />
+                            <p>Beginner</p>
+                          </div>
+                        </div>
+                        <div className="card-btn_div">
+                          <Link
+                            to="/login"
+                            className="card-btn text-center pt-2"
+                          >
+                            Check Recipe <i className="fas fa-arrow-circle-right"></i>
+                          </Link>
+                        </div>
                       </div>
-                    </div>
-  
-                    <div className="card-content">
-                      <div className="small_box2">
-                        <FaClock />
-                        <p>{data.time}</p>
-                      </div>
-                      <div className="small_box2">
-                        <FaUtensils />
-                        <p>Serving</p>
-                      </div>
-                      <div className="small_box2">
-                        <FaSmile />
-                        <p>Beginner</p>
-                      </div>
-                    </div>
-                    <div className="card-btn_div">
-                      <Link
-                        to="/login"
-                        className="card-btn text-center pt-2"
-                      >
-                        Check Recipe <i className="fas fa-arrow-circle-right"></i>
-                      </Link>
-                    </div>
-                  </div>
-                  );
-                }
-              })}
+                    );
+                  }
+                })}
+              </div>
             </div>
           </div>
         </div>
@@ -306,77 +310,81 @@ function Home() {
           </div>
         </section>
 
-        <section id="contact" className="rows">
-          <div className="col-md-6">
-            <img src="pics/contact_img.png" height="100%" width="100%" alt="" />
-          </div>
-          <div className="col-md-6">
-            <h2>Leave us a message</h2>
-            <form>
-              <div className="row">
-                <div className="col-md-6">
-                  <div className="mb-3">
-                    <label
-                      htmlFor="exampleFormControlInput1"
-                      className="form-label"
-                    >
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="name"
-                      id="exampleFormControlInput1"
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Jane Doe"
-                      required
-                    />
+        <section id="contact">
+          <div className="row">
+            <div className="col-md-6">
+              <img src="pics/contact_img.png" height="100%" width="100%" alt="" />
+            </div>
+            <div className="col-md-6">
+              <h2>Leave us a message</h2>
+              <form>
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label
+                        htmlFor="exampleFormControlInput1"
+                        className="form-label"
+                      >
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="name"
+                        id="exampleFormControlInput1"
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Jane Doe"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="mb-3">
+                      <label
+                        htmlFor="exampleFormControlInput1"
+                        className="form-label"
+                      >
+                        Email address
+                      </label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        name="email"
+                        id="exampleFormControlInput1"
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="name@example.com"
+                        required
+                      />
+                    </div>
                   </div>
                 </div>
-                <div className="col-md-6">
-                  <div className="mb-3">
-                    <label
-                      htmlFor="exampleFormControlInput1"
-                      className="form-label"
-                    >
-                      Email address
-                    </label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      name="email"
-                      id="exampleFormControlInput1"
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="name@example.com"
-                      required
-                    />
-                  </div>
+                <div className="mb-3">
+                  <label
+                    htmlFor="exampleFormControlTextarea1"
+                    className="form-label"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id="exampleFormControlTextarea1"
+                    onChange={(e) => setMsg(e.target.value)}
+                    name="msg"
+                    rows="3"
+                    placeholder="Your message"
+                    required
+                  ></textarea>
                 </div>
-              </div>
-              <div className="mb-3">
-                <label
-                  htmlFor="exampleFormControlTextarea1"
-                  className="form-label"
-                >
-                  Message
-                </label>
-                <textarea
-                  className="form-control"
-                  id="exampleFormControlTextarea1"
-                  onChange={(e) => setMsg(e.target.value)}
-                  name="msg"
-                  rows="3"
-                  placeholder="Your message"
-                  required
-                ></textarea>
-              </div>
-              <div className="col-12">
-                <button className="btn btn-success" onClick={submit_msg}>
-                  Submit form
-                </button>
-              </div>
-            </form>
+                <div className="col-12">
+                  <button className="btn btn-success" onClick={submit_msg}>
+                    Submit form
+                  </button>
+                </div>
+              </form>
+            </div>
+
           </div>
+
         </section>
       </Container>
     </div>
